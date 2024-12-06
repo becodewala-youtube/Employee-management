@@ -29,7 +29,7 @@ export default function EmployeeListPage() {
     limit: 10,
     ...filters,
   });
-console.log(idhai);
+/* console.log(idhai); */
   const columns = [
     {
       header: 'Name',
@@ -75,7 +75,7 @@ console.log(idhai);
     ,
     {
       header: 'Actions',
-      accessor: 'id' as keyof Employee,
+      accessor: '_id' as keyof Employee,
       render: (value: any) => (
         <div className="flex space-x-2">
           <button
@@ -94,13 +94,15 @@ console.log(idhai);
       ),
     },
   ];
+  
 
-  const handleDelete = async (idhai: string) => {
+  const handleDelete = async (_id: string) => {
     /* console.log(employees) */
  /*    console.log(_id); */
     if (window.confirm('Are you sure you want to delete this employee?')) {
       try {
-        await api.delete(`/api/employees/${idhai}`);
+        await api.delete(`/api/employees/${_id}`);
+      /*   console.log(idhai); */
         // Refresh the employee list
         setCurrentPage(1);
       } catch (error) {

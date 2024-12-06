@@ -29,6 +29,7 @@ export default function EmployeeFormPage() {
   const { id } = useParams();
   const [imagePreview, setImagePreview] = useState<string>();
   const isEditMode = Boolean(id);
+  
 
   const {
     register,
