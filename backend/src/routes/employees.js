@@ -84,6 +84,27 @@ router.post('/',
   }
 );
 
+
+// get employee details
+router.get('/:id',auth,async(req, res, next)=>{
+  try{
+    const employee = await Employee.findOne({
+      _id: req.params.id,
+      createdBy:req.user._id,
+    });
+    if(!employee){
+      return res.status(404).json({error: 'Employee Not Found'});
+    }
+    res.json(employee);
+  }catch(error){
+    next(error);
+  }
+
+  }
+);
+
+
+
 // Update employee
 router.put('/:id',
   auth,
