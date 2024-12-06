@@ -7,7 +7,7 @@ export function useEmployees(filters: EmployeeFilters) {
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [idhai,setIdhai]= useState(null);
+ /*  const [idhai,setIdhai]= useState(null); */
 
 /* console.log(employees); */
   useEffect(() => {
@@ -18,7 +18,7 @@ export function useEmployees(filters: EmployeeFilters) {
         const response = await api.get('/api/employees', { params: filters });
         setEmployees(response.data.employees);
         /* const idhai =response.data.employees[0]._id */
-        setIdhai(response.data.employees[0]._id);
+        /* setIdhai(response.data.employees[0]._id); */
         setTotalPages(response.data.totalPages);
       } catch (err) {
         setError('Failed to fetch employees');
@@ -30,5 +30,5 @@ export function useEmployees(filters: EmployeeFilters) {
     fetchEmployees();
   }, []);
 
-  return { employees, totalPages, isLoading, error ,idhai};
+  return { employees, totalPages, isLoading, error };
 }
