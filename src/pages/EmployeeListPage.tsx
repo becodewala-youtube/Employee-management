@@ -23,7 +23,9 @@ export default function EmployeeListPage() {
     sortOrder: 'asc' as const,
   });
 
-  const { employees, totalPages, isLoading, error,idhai } = useEmployees({
+ 
+
+  const { employees, totalPages, isLoading, error } = useEmployees({
     search,
     page: currentPage,
     limit: 10,
@@ -58,7 +60,7 @@ export default function EmployeeListPage() {
     },
     {
       header: 'Created Date',
-      accessor: 'createdDate' as keyof Employee,
+      accessor: 'createdAt' as keyof Employee,
       render: (value: any) => {
         try {
           // Ensure the value is a valid date before formatting
